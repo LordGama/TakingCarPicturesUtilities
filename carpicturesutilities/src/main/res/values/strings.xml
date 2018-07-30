@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CarPicturesUtilities</string>
+    <string name="error_missing_permissions">Missing Permissions</string>
+    <string name="action_back">Back</string>
+    <string name="action_next">Next</string>
+    <string name="action_grant_access">Grant Access</string>
+
+    <string name="placeholder_capture_vin_photo">Capture Vin Photo</string>
 </resources>
