@@ -4,7 +4,7 @@ package com.lordgama.carpicturesutilities
  * Clase base de vehiculo usada para extender atributos base
  */
 
-data class BaseVehicle(
+class BaseVehicle(
         var id: Int = 0,
         var customAgentName: String = "",
         var latitude: Double = 0.000000,
