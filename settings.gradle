@@ -1,1 +1,1 @@
-include ':app', ':connectivityutils'
+include ':app', ':connectivityutils', ':carpicturesutilities'
