@@ -46,8 +46,8 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
 
 
     //Photo File and Key
-    private val EXTRA_PHOTO_TAKEN_KEY = "EXTRA_PHOTO_TAKEN"
-    private lateinit var EXTRA_PHOTO_TAKEN: File
+    val EXTRA_PHOTO_TAKEN_KEY = "EXTRA_PHOTO_TAKEN"
+    lateinit var EXTRA_PHOTO_TAKEN: File
 
     //Photo Type and Key
     val ARGUMENT_PHOTO_TYPE_KEY = "ARGUMENT_PHOTO_TYPE"
@@ -61,7 +61,7 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
     //Access to file provider
     abstract var AUTHORITY: String
 
-    private val REQUEST_CODE_IMAGE_CAPTURE = 9002
+    val REQUEST_CODE_IMAGE_CAPTURE = 9002
 
 
     /*
@@ -118,6 +118,12 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
 
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if(::EXTRA_PHOTO_TAKEN.isInitialized)
+            outState.putSerializable(EXTRA_PHOTO_TAKEN_KEY,EXTRA_PHOTO_TAKEN)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -132,12 +138,30 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
     fun setToInitialState(){
         when(ARGUMENT_PHOTO_TYPE){
             VehiclePhoto.PhotoType.PREVIEW -> {}
-            VehiclePhoto.PhotoType.VIN -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_VIN
-            VehiclePhoto.PhotoType.FRONT -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_FRONT
-            VehiclePhoto.PhotoType.PASSENGER_SIDE -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_PSIDE
-            VehiclePhoto.PhotoType.BACK -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_BACK
-            VehiclePhoto.PhotoType.DRIVER_SIDE -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_DSIDE
-            VehiclePhoto.PhotoType.DOOR -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_DOOR
+            VehiclePhoto.PhotoType.VIN -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_VIN
+                photoLabelText = "VIN"
+            }
+            VehiclePhoto.PhotoType.FRONT -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_FRONT
+                photoLabelText = "FRONT"
+            }
+            VehiclePhoto.PhotoType.PASSENGER_SIDE -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_PSIDE
+                photoLabelText = "PASSENGER_SIDE"
+            }
+            VehiclePhoto.PhotoType.BACK -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_BACK
+                photoLabelText = "BACK"
+            }
+            VehiclePhoto.PhotoType.DRIVER_SIDE -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_DSIDE
+                photoLabelText = "DRIVER_SIDE"
+            }
+            VehiclePhoto.PhotoType.DOOR -> {
+                DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_DOOR
+                photoLabelText = "DOOR_VIN"
+            }
         }
     }
 
