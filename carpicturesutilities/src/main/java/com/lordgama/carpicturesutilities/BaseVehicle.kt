@@ -5,15 +5,15 @@ package com.lordgama.carpicturesutilities
  */
 
 abstract class BaseVehicle{
-    var id: Int = 0
-    var customAgentName: String = ""
-    var latitude: Double = 0.000000
-    var longitude: Double = 0.000000
-    var make: String = ""
-    var model: String = ""
-    var pediment: String = ""
-    var pedimentDate: String = ""
-    var status: Status = Status.PENDING_STATUS
-    var vin: String = ""
-    var year: String = ""
+    open var id: Int = 0
+    open var customAgentName: String = ""
+    open var latitude: Double = 0.000000
+    open var longitude: Double = 0.000000
+    open var make: String = ""
+    open var model: String = ""
+    open var pediment: String = ""
+    open var pedimentDate: String = ""
+    open var status: Status = Status.PENDING_STATUS
+    open var vin: String = ""
+    open var year: String = ""
 }
