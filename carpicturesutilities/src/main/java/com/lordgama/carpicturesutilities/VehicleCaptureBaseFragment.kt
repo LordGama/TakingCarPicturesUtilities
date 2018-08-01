@@ -23,15 +23,13 @@ import kotlinx.android.synthetic.main.fragment_capture_photo.*
 abstract class VehicleCaptureBaseFragment : Fragment() {
 
     //Default Images
-    val DEFAULT_IMAGE_RESOURCE_VIN = R.drawable.primera_imagen
-    val DEFAULT_IMAGE_RESOURCE_FRONT = R.drawable.cuarta_imagen
-    val DEFAULT_IMAGE_RESOURCE_DOOR = R.drawable.segunda_imagen
-    val DEFAULT_IMAGE_RESOURCE_DSIDE = R.drawable.tercera_imagen
-    val DEFAULT_IMAGE_RESOURCE_PSIDE = R.drawable.tercera_imagen
-    val DEFAULT_IMAGE_RESOURCE_BACK = R.drawable.quinta_imagen
-    val DEFAULT_IMAGE = R.drawable.image_placeholder
-
-    var DEFAULT_IMAGE_PLACEHOLDER: Int = DEFAULT_IMAGE
+    open val DEFAULT_IMAGE_RESOURCE_VIN = R.drawable.primera_imagen
+    open val DEFAULT_IMAGE_RESOURCE_FRONT = R.drawable.cuarta_imagen
+    open val DEFAULT_IMAGE_RESOURCE_DOOR = R.drawable.segunda_imagen
+    open val DEFAULT_IMAGE_RESOURCE_DSIDE = R.drawable.tercera_imagen
+    open val DEFAULT_IMAGE_RESOURCE_PSIDE = R.drawable.tercera_imagen
+    open val DEFAULT_IMAGE_RESOURCE_BACK = R.drawable.quinta_imagen
+    open var DEFAULT_IMAGE_PLACEHOLDER: Int = R.drawable.image_placeholder
 
     /*
     Related to Page Navigation
@@ -83,16 +81,21 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
             try {
                 captureFlowListener = context as CaptureFlowListener
             } catch (e: ClassCastException) {
-                throw ClassCastException(activity.toString() + " must implement NavigateBetweenPagesListener")
+                throw ClassCastException(activity.toString() + " must implement CaptureFlowListener")
             }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ARGUMENT_FRAGMENT_POSITION = arguments!!.getInt(ARGUMENT_FRAGMENT_POSITION_KEY)
-        ARGUMENT_PHOTO_TYPE = VehiclePhoto.PhotoType.toPhotoType(arguments!!.getInt(ARGUMENT_PHOTO_TYPE_KEY)) ?: VehiclePhoto.PhotoType.PREVIEW
 
+        if(arguments!=null){
+            ARGUMENT_FRAGMENT_POSITION = arguments!!.getInt(ARGUMENT_FRAGMENT_POSITION_KEY,0)
+            ARGUMENT_PHOTO_TYPE = VehiclePhoto.PhotoType.toPhotoType(arguments!!.getInt(ARGUMENT_PHOTO_TYPE_KEY,0)) ?: VehiclePhoto.PhotoType.PREVIEW
+        }else{
+            ARGUMENT_FRAGMENT_POSITION = 0
+            ARGUMENT_PHOTO_TYPE = VehiclePhoto.PhotoType.PREVIEW
+        }
 
         /*
         Get the device Screen white to use
@@ -115,12 +118,20 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        if (checkAndRequestPermissions()) {
+            onPermissionGranted()
+        }
+    }
+
     /**
      * According to the type of photo, the image and text used are set.
      */
     fun setToInitialState(){
         when(ARGUMENT_PHOTO_TYPE){
-            VehiclePhoto.PhotoType.PREVIEW -> TODO()
+            VehiclePhoto.PhotoType.PREVIEW -> {}
             VehiclePhoto.PhotoType.VIN -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_VIN
             VehiclePhoto.PhotoType.FRONT -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_FRONT
             VehiclePhoto.PhotoType.PASSENGER_SIDE -> DEFAULT_IMAGE_PLACEHOLDER = DEFAULT_IMAGE_RESOURCE_PSIDE

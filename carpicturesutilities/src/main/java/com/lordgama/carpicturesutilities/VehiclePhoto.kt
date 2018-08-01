@@ -1,5 +1,7 @@
 package com.lordgama.carpicturesutilities
 
+import android.arch.persistence.room.TypeConverter
+
 /**
  * Created by Daniel on 26/07/2018.
  *
@@ -29,8 +31,12 @@ abstract class VehiclePhoto(){
         companion object {
             private val map = PhotoType.values().associateBy(PhotoType::type);
 
+            @TypeConverter
+            @JvmStatic
             fun toPhotoType(type: Int) = map[type]
 
+            @TypeConverter
+            @JvmStatic
             fun fromStatus(photoType: PhotoType): Int {
                 return photoType.type
             }

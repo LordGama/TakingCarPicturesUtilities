@@ -41,7 +41,7 @@ abstract class VehicleResumeBaseFragment: Fragment(){
             try {
                 captureFlowListener = context as CaptureFlowListener
             } catch (e: ClassCastException) {
-                throw ClassCastException(activity.toString() + " must implement NavigateBetweenPagesListener")
+                throw ClassCastException(activity.toString() + " must implement CaptureFlowListener")
             }
         }
     }
