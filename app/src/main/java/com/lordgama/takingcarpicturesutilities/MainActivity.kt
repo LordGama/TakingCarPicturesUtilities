@@ -3,11 +3,33 @@ package com.lordgama.takingcarpicturesutilities
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import com.lordgama.carpicturesutilities.CaptureFlowListener
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CaptureFlowListener {
+class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragment.OnSaveButtonClickListener {
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.right_top_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.add_vehicle ->{
+                val fragmentManager = supportFragmentManager
+                fragmentManager.beginTransaction().replace(R.id.custom,AddVehicleFragment()).commit()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
+    }
+
+    override fun onClickSave() {
+    }
+
     override fun moveToThePage(position: Int) {
     }
 
