@@ -19,6 +19,15 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        val fragmentManager = supportFragmentManager
+
+        val argumentos = Bundle()
+        argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",0)
+        argumentos.putInt("ARGUMENT_PHOTO_TYPE",2)
+        val fragment = CustomFragment()
+        fragment.arguments = argumentos
+        fragmentManager.beginTransaction().add(R.id.custom,fragment).commit()
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()

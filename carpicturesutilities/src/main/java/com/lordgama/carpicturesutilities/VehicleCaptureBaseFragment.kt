@@ -20,7 +20,7 @@ import java.util.HashMap
 import java.util.regex.Pattern
 import kotlinx.android.synthetic.main.fragment_capture_photo.*
 
-abstract class VehicleCaptureBaseFragment : Fragment() {
+abstract class VehicleCaptureBaseFragment<T>: Fragment() {
 
     //Default Images
     open val DEFAULT_IMAGE_RESOURCE_VIN = R.drawable.primera_imagen
@@ -67,7 +67,7 @@ abstract class VehicleCaptureBaseFragment : Fragment() {
     /*
     Vehicle POJO
      */
-    abstract var vehicle: BaseVehicle
+    abstract var vehicle: T
 
     var displaySizeWidth = 0
 

@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.lordgama.carpicturesutilities.BaseVehicle
 import com.lordgama.carpicturesutilities.VehicleCaptureBaseFragment
+import com.lordgama.takingcarpicturesutilities.R.id.text_view_test
 import kotlinx.android.synthetic.main.custom_fragment.*
 import java.util.zip.Inflater
 
-class CustomFragment: VehicleCaptureBaseFragment() {
+class CustomFragment: VehicleCaptureBaseFragment<CustomVehicle>() {
     override var AUTHORITY: String = BuildConfig.APPLICATION_ID + ".fileprovider"
-    override var vehicle: BaseVehicle = CustomVehicle()
+    override var vehicle: CustomVehicle = CustomVehicle()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.custom_fragment,container,false) as View
