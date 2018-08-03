@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
     }
 
     override fun onClickSave() {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesListFragment()).commit()
     }
 
     override fun moveToThePage(position: Int) {
@@ -42,18 +44,19 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
         setSupportActionBar(toolbar)
 
         val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().add(R.id.custom,VehiclesListFragment()).commit()
 
-        val argumentos = Bundle()
+        /*val argumentos = Bundle()
         argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",0)
         argumentos.putInt("ARGUMENT_PHOTO_TYPE",2)
         val fragment = CustomFragment()
         fragment.arguments = argumentos
-        fragmentManager.beginTransaction().add(R.id.custom,fragment).commit()
+        fragmentManager.beginTransaction().add(R.id.custom,fragment).commit()*/
 
-        fab.setOnClickListener { view ->
+        /*fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-        }
+        }*/
     }
 
 }

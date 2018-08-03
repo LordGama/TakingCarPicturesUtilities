@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_capture_vehicle.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class AddVehicleFragment: Fragment() {
     var onSaveButtonClickListener: OnSaveButtonClickListener? = null
@@ -42,17 +44,21 @@ class AddVehicleFragment: Fragment() {
 
         button_save.setOnClickListener {
 
-            val newVehicle = CustomVehicle()
-            newVehicle.customAgentName = text_input_edit_text_custom_agent.text.toString()
-            newVehicle.make = text_input_edit_text_make.text.toString()
-            newVehicle.model = text_input_edit_text_model.text.toString()
-            newVehicle.year = text_input_edit_text_year.text.toString()
-            newVehicle.vin = text_input_edit_text_vin.text.toString()
-            newVehicle.pediment = text_input_edit_text_pediment.text.toString()
+            doAsync {
+                val newVehicle = CustomVehicle()
+                newVehicle.customAgentName = text_input_edit_text_custom_agent.text.toString()
+                newVehicle.make = text_input_edit_text_make.text.toString()
+                newVehicle.model = text_input_edit_text_model.text.toString()
+                newVehicle.year = text_input_edit_text_year.text.toString()
+                newVehicle.vin = text_input_edit_text_vin.text.toString()
+                newVehicle.pediment = text_input_edit_text_pediment.text.toString()
 
-            viewModel.database.customVehicleDao().insertAll(newVehicle)
+                viewModel.database.customVehicleDao().insertAll(newVehicle)
 
-            onSaveButtonClickListener?.onClickSave()
+                uiThread {
+                    onSaveButtonClickListener?.onClickSave()
+                }
+            }
 
         }
 
