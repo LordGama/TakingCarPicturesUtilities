@@ -4,8 +4,8 @@ package com.lordgama.carpicturesutilities
  *
  * @Version 1
  */
-abstract class VehiclePhoto(){
-    open var id: Int = 0
+abstract class VehiclePhoto{
+    abstract var id: Int
     open var photoUrlString: String = ""
     open var vehicle: Int = 0 //Id del vehiculo al que pertenece
     open var type: PhotoType = PhotoType.PREVIEW

@@ -61,8 +61,6 @@ class AddVehicleFragment: Fragment() {
             }
 
         }
-
-
     }
 
     interface OnSaveButtonClickListener{

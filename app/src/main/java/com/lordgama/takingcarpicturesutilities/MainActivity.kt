@@ -33,9 +33,67 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
     }
 
     override fun moveToThePage(position: Int) {
+        when(position){
+            0 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",0)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",1)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+            1 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",1)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",2)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+            2 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",2)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",3)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+            3 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",3)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",4)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+            4 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",4)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",5)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+            5 -> {
+                val fragmentManager = supportFragmentManager
+                val argumentos = Bundle()
+                argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",5)
+                argumentos.putInt("ARGUMENT_PHOTO_TYPE",6)
+                val fragment = CustomFragment()
+                fragment.arguments = argumentos
+                fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
+            }
+        }
     }
 
     override fun captureComplete() {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesListFragment()).commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,10 +7,12 @@ import com.lordgama.carpicturesutilities.VehiclePhoto
 
 
 @Database(entities = arrayOf(
-        CustomVehicle::class
-),version = 1)
+        CustomVehicle::class,
+        MPhoto::class
+),version = 2)
 
 @TypeConverters(StatusConverter::class,PhotoTypeConverter::class)
 abstract class Database(): RoomDatabase(){
     abstract fun customVehicleDao(): CustomVehicleDao
+    abstract fun mPhotoDao(): MPhotoDao
 }

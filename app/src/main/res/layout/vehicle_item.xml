@@ -30,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
+            android:src="@drawable/photo_placeholder"
             tools:src="@drawable/image_placeholder"
             />
 
@@ -101,7 +102,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PHOTOS"
+            android:text="CAPTURE"
             android:textColor="@color/colorText1"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
