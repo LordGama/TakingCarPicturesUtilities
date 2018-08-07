@@ -1,21 +1,17 @@
 package com.lordgama.carpicturesutilities
-
-import android.arch.persistence.room.TypeConverter
-
 /**
  * Created by Daniel on 26/07/2018.
  *
  * @Version 1
  */
-
-abstract class VehiclePhoto(){
+abstract class VehiclePhoto{
     abstract var id: Int
-    abstract var photoUrlString: String
-    abstract var vehicle: Int //Id del vehiculo al que pertenece
-    abstract var type: PhotoType
-    abstract var date: String
-    abstract var latitude: Float
-    abstract var longitude: Float
+    open var photoUrlString: String = ""
+    open var vehicle: Int = 0 //Id del vehiculo al que pertenece
+    open var type: PhotoType = PhotoType.PREVIEW
+    open var date: String = ""
+    open var latitude: Float = 0.000000F
+    open var longitude: Float = 0.000000F
 
     //abstract class PhotoType(name: String, ordinal: Int): Enum<Int>(name, ordinal) {}
 
@@ -30,14 +26,9 @@ abstract class VehiclePhoto(){
 
         companion object {
             private val map = PhotoType.values().associateBy(PhotoType::type);
-
-            @TypeConverter
-            @JvmStatic
             fun toPhotoType(type: Int) = map[type]
 
-            @TypeConverter
-            @JvmStatic
-            fun fromStatus(photoType: PhotoType): Int {
+            fun fromPhoto(photoType: PhotoType): Int {
                 return photoType.type
             }
 
