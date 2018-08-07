@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.vehicle_item.view.*
 
-class VehiclesAdapter(var vehicles: MutableList<CustomVehicle>): RecyclerView.Adapter<VehiclesAdapter.VehiclesHolder>() {
+class VehiclesAdapter(var vehicles: MutableList<MVehicle>): RecyclerView.Adapter<VehiclesAdapter.VehiclesHolder>() {
 
     private var onVehicleEventListener: OnVehicleEventListener? = null
 
@@ -28,7 +28,7 @@ class VehiclesAdapter(var vehicles: MutableList<CustomVehicle>): RecyclerView.Ad
 
     inner class VehiclesHolder(itemView: View?): RecyclerView.ViewHolder(itemView){
 
-        fun bind(vehicle: CustomVehicle){
+        fun bind(vehicle: MVehicle){
             itemView.vehicle_title.text = "${vehicle.make} ${vehicle.model} ${vehicle.year}".capitalize()
             itemView.vehicle_vin.text = vehicle.vin
             itemView.vehicle_status.text = vehicle.status.status
@@ -42,6 +42,6 @@ class VehiclesAdapter(var vehicles: MutableList<CustomVehicle>): RecyclerView.Ad
     }
 
     interface OnVehicleEventListener{
-        fun onCapture(vehicle: CustomVehicle)
+        fun onCapture(vehicle: MVehicle)
     }
 }

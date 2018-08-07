@@ -1,7 +1,6 @@
 package com.lordgama.takingcarpicturesutilities
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
 
     override fun onClickSave() {
         val fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesListFragment()).commit()
+        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesFragment()).commit()
     }
 
     override fun moveToThePage(position: Int) {
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",0)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",1)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",1)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",2)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",2)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",3)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",3)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",4)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",4)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",5)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -84,7 +83,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
                 val argumentos = Bundle()
                 argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",5)
                 argumentos.putInt("ARGUMENT_PHOTO_TYPE",6)
-                val fragment = CustomFragment()
+                val fragment = MCaptureFragment()
                 fragment.arguments = argumentos
                 fragmentManager.beginTransaction().replace(R.id.custom,fragment).commit()
             }
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
 
     override fun captureComplete() {
         val fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesListFragment()).commit()
+        fragmentManager.beginTransaction().replace(R.id.custom,VehiclesFragment()).commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,12 +101,12 @@ class MainActivity : AppCompatActivity(), CaptureFlowListener, AddVehicleFragmen
         setSupportActionBar(toolbar)
 
         val fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().add(R.id.custom,VehiclesListFragment()).commit()
+        fragmentManager.beginTransaction().add(R.id.custom,VehiclesFragment()).commit()
 
         /*val argumentos = Bundle()
         argumentos.putInt("ARGUMENT_FRAGMENT_POSITION",0)
         argumentos.putInt("ARGUMENT_PHOTO_TYPE",2)
-        val fragment = CustomFragment()
+        val fragment = MCaptureFragment()
         fragment.arguments = argumentos
         fragmentManager.beginTransaction().add(R.id.custom,fragment).commit()*/
 

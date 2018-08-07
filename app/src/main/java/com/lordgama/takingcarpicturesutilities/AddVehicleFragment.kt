@@ -45,7 +45,7 @@ class AddVehicleFragment: Fragment() {
         button_save.setOnClickListener {
 
             doAsync {
-                val newVehicle = CustomVehicle()
+                val newVehicle = MVehicle()
                 newVehicle.customAgentName = text_input_edit_text_custom_agent.text.toString()
                 newVehicle.make = text_input_edit_text_make.text.toString()
                 newVehicle.model = text_input_edit_text_model.text.toString()

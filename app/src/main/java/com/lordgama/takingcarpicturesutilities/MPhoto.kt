@@ -8,7 +8,7 @@ import com.lordgama.carpicturesutilities.VehiclePhoto
 
 @Entity(tableName = "photos",
         foreignKeys = arrayOf(
-        ForeignKey(entity = CustomVehicle::class, parentColumns = arrayOf("id"), childColumns = arrayOf("vehicle"),onDelete = ForeignKey.CASCADE)
+        ForeignKey(entity = MVehicle::class, parentColumns = arrayOf("id"), childColumns = arrayOf("vehicle"),onDelete = ForeignKey.CASCADE)
         ),
         indices = arrayOf(Index(value = arrayOf("vehicle","type"),unique = true)))
 class MPhoto: VehiclePhoto() {

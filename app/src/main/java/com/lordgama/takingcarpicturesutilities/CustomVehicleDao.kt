@@ -9,8 +9,8 @@ import android.arch.persistence.room.Query
 @Dao
 interface CustomVehicleDao {
     @Query("Select * from vehicles")
-    fun getAll(): LiveData<List<CustomVehicle>>
+    fun getAll(): LiveData<List<MVehicle>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(vararg vehicle: CustomVehicle)
+    fun insertAll(vararg vehicle: MVehicle)
 }

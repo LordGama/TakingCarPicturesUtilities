@@ -8,9 +8,9 @@ import android.arch.persistence.room.Room
 
 class ViewModel(application: Application) : AndroidViewModel(application){
 
-    var vehicleToBeCaptured: MutableLiveData<CustomVehicle> = MutableLiveData()
+    var vehicleToBeCaptured: MutableLiveData<MVehicle> = MutableLiveData()
 
-    fun setVehicleToBeCaptured(vehicle: CustomVehicle){
+    fun setVehicleToBeCaptured(vehicle: MVehicle){
         vehicleToBeCaptured.value = vehicle
     }
 
@@ -20,8 +20,13 @@ class ViewModel(application: Application) : AndroidViewModel(application){
             .fallbackToDestructiveMigration()
             .build()
 
-    fun getVehicles(): LiveData<List<CustomVehicle>>{
+    fun getVehicles(): LiveData<List<MVehicle>>{
+        //loadVehicles()
         return database.customVehicleDao().getAll()
+    }
+
+    fun loadVehicles(){
+        TODO("Not Implemented")
     }
 
 }

@@ -3,13 +3,12 @@ package com.lordgama.takingcarpicturesutilities
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
-import com.lordgama.carpicturesutilities.VehiclePhoto
 
 
 @Database(entities = arrayOf(
-        CustomVehicle::class,
+        MVehicle::class,
         MPhoto::class
-),version = 2)
+),version = 3)
 
 @TypeConverters(StatusConverter::class,PhotoTypeConverter::class)
 abstract class Database(): RoomDatabase(){

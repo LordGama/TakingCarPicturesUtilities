@@ -12,11 +12,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.lordgama.carpicturesutilities.BaseVehicle
 import com.lordgama.carpicturesutilities.ImageHandler
 import com.lordgama.carpicturesutilities.VehicleCaptureBaseFragment
 import com.lordgama.carpicturesutilities.VehiclePhoto
-import com.lordgama.takingcarpicturesutilities.R.id.text_view_test
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.custom_fragment.*
 import org.jetbrains.anko.doAsync
@@ -25,11 +23,10 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.zip.Inflater
 
-class CustomFragment: VehicleCaptureBaseFragment<CustomVehicle>() {
+class MCaptureFragment: VehicleCaptureBaseFragment<MVehicle>() {
     override var AUTHORITY: String = BuildConfig.APPLICATION_ID + ".fileprovider"
-    override var vehicle: CustomVehicle = CustomVehicle()
+    override var vehicle: MVehicle = MVehicle()
 
     lateinit var viewModel: ViewModel
 
@@ -136,9 +133,6 @@ class CustomFragment: VehicleCaptureBaseFragment<CustomVehicle>() {
                 }
 
                 uiThread {
-                    /*text_view_date.setText(photoToUpdateInsert?.date)
-                    text_view_latitude.setText("${photoToUpdateInsert?.latitude}")
-                    text_view_longitude.setText("${photoToUpdateInsert?.longitude}")*/
                 }
             }
         }else{

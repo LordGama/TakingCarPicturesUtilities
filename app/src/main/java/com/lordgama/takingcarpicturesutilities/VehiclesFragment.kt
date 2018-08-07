@@ -14,11 +14,11 @@ import com.lordgama.carpicturesutilities.CaptureFlowListener
 import com.lordgama.carpicturesutilities.DefaultItemDecoration
 import kotlinx.android.synthetic.main.fragment_vehicles_list.*
 
-class VehiclesListFragment: Fragment() {
+class VehiclesFragment: Fragment() {
 
     var captureFlowListener: CaptureFlowListener? = null
     lateinit var viewModel: ViewModel
-    var vehiclesList : MutableList<CustomVehicle> = mutableListOf()
+    var vehiclesList : MutableList<MVehicle> = mutableListOf()
 
     /**
      * Instantiate the listener with the context of the fragment
@@ -53,7 +53,7 @@ class VehiclesListFragment: Fragment() {
 
         val adapter = VehiclesAdapter(vehiclesList)
         adapter.setOnVehicleEventListener(object : VehiclesAdapter.OnVehicleEventListener {
-            override fun onCapture(vehicle: CustomVehicle) {
+            override fun onCapture(vehicle: MVehicle) {
 
                 viewModel.setVehicleToBeCaptured(vehicle)
                 captureFlowListener?.moveToThePage(0)
